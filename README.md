@@ -1,0 +1,1 @@
+# qa_guru_python2_06zip
