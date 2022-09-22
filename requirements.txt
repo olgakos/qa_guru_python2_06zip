@@ -1,4 +1,4 @@
-pytest
+pytest == 7.1.3
 PyPDF2
 xlrd
 openpyxl
