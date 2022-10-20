@@ -4,6 +4,8 @@ from PyPDF2 import PdfReader
 import csv
 from openpyxl import load_workbook
 import os
+from datetime import datetime # сравненеия даты, для вариант2
+
 
 # Предусловие: в папке resources находится несколько разных файлов: pdf, xlsx, csv
 # Task_1: Средствами Python запаковать в zip архив файлы разных типов: pdf, xlsx, csv
@@ -58,8 +60,12 @@ def test_xlsx_datatime():
         with myzip.open("resources/file1.xlsx") as xlsx_data:
             workbook = load_workbook(xlsx_data)
             datetime = workbook.active
+#вараинт1 "дату-в-втроку"
+            #datetime = str(datetime.cell(row=4, column=1).value)
+            #assert "1912-01-03 00:00:00" in datetime
+# вараинт2 "строку в дату"
             datetime = datetime.cell(row=4, column=1).value
-            assert "03.01.1912" in datetime
+            assert datetime.strptime('1912-01-03', '%Y-%m-%d') == datetime
 
 
 
